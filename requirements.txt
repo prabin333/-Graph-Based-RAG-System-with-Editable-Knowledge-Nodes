@@ -1,0 +1,14 @@
+torch
+transformers
+sentence-transformers
+faiss-cpu
+numpy
+spacy
+networkx
+fastapi
+uvicorn
+python-multipart
+pydantic
+python-dotenv
+PyPDF2
+accelerate

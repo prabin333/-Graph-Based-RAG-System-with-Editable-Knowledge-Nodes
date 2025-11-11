@@ -1,0 +1,114 @@
+{
+  "nodes": [
+    {
+      "id": "Policy_Framework",
+      "type": "framework",
+      "label": "Document Knowledge Framework",
+      "description": "Overall document knowledge structure"
+    },
+    {
+      "id": "Policy_Section_1",
+      "type": "policy_section",
+      "label": "Section Title",
+      "content": "Section content summary",
+      "requirements_count": 1,
+      "description": "Policy section: Section Title"
+    },
+    {
+      "id": "Policy_Section_2",
+      "type": "policy_section",
+      "label": "Section Title",
+      "content": "Section content summary",
+      "requirements_count": 1,
+      "description": "Policy section: Section Title"
+    },
+    {
+      "id": "req_1_1",
+      "type": "requirement",
+      "label": "Section 1.1",
+      "content": "User data must be stored on approved internal servers only.",
+      "description": "Requirement: User data must be stored on approved internal servers only...."
+    },
+    {
+      "id": "req_2_1",
+      "type": "requirement",
+      "label": "Section 2.1",
+      "content": "Data at rest must be encrypted using AES-256 encryption.",
+      "description": "Requirement: Data at rest must be encrypted using AES-256 encryption...."
+    },
+    {
+      "id": "entity_1",
+      "type": "entity",
+      "label": "User",
+      "entity_type": "PERSON",
+      "description": "User entity description",
+      "original_text": "User"
+    },
+    {
+      "id": "entity_2",
+      "type": "entity",
+      "label": "Internal Server",
+      "entity_type": "DATA|SERVER",
+      "description": "Internal server entity description",
+      "original_text": "Internal Server"
+    },
+    {
+      "id": "entity_3",
+      "type": "entity",
+      "label": "External Server",
+      "entity_type": "DATA|SERVER",
+      "description": "External server entity description",
+      "original_text": "External Server"
+    }
+  ],
+  "edges": [
+    {
+      "source": "Policy_Framework",
+      "target": "Policy_Section_1",
+      "relationship": "contains_section",
+      "description": "Framework contains this section"
+    },
+    {
+      "source": "Policy_Framework",
+      "target": "Policy_Section_2",
+      "relationship": "contains_section",
+      "description": "Framework contains this section"
+    },
+    {
+      "source": "Policy_Section_1",
+      "target": "req_1_1",
+      "relationship": "contains_requirement",
+      "description": "Section contains requirement req_1_1"
+    },
+    {
+      "source": "Policy_Section_2",
+      "target": "req_2_1",
+      "relationship": "contains_requirement",
+      "description": "Section contains requirement req_2_1"
+    },
+    {
+      "source": "req_1_1",
+      "target": "entity_1",
+      "relationship": "involves_entity",
+      "description": "Requirement involves User"
+    },
+    {
+      "source": "req_1_1",
+      "target": "entity_2",
+      "relationship": "involves_entity",
+      "description": "Requirement involves Internal Server"
+    },
+    {
+      "source": "entity_1",
+      "target": "entity_2",
+      "relationship": "stores",
+      "description": "User stores data on internal server"
+    },
+    {
+      "source": "entity_2",
+      "target": "entity_3",
+      "relationship": "stores",
+      "description": "Internal server stores data on external server"
+    }
+  ]
+}
