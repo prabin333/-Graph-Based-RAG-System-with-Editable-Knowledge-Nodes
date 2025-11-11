@@ -50,7 +50,6 @@ class GraphRAGCLI:
                 print("❌ Invalid option. Please enter only 1-7.")
     
     def _get_json_input(self):
-        """Get JSON input that supports both single-line and multi-line formats"""
         print("👉 Enter JSON (press Enter twice when done for multi-line):")
         lines = []
         while True:
@@ -70,7 +69,6 @@ class GraphRAGCLI:
         return json_input
     
     def _parse_json_input(self, json_input):
-        """Parse JSON input with better error handling"""
         if not json_input:
             raise ValueError("JSON input is required")
         
@@ -82,7 +80,6 @@ class GraphRAGCLI:
             raise ValueError(f"Invalid JSON format: {e}")
     
     def process_document_json(self):
-        """Process document and optionally answer query using JSON input format"""
         print("\n📄 PROCESS DOCUMENT")
         print("Supported JSON formats:")
         print('Single-line: {"document": "data/sample_policy.txt", "query": "List requirements"}')
@@ -115,7 +112,6 @@ class GraphRAGCLI:
             print(f"❌ Error processing document: {e}")
     
     def query_graph_json(self):
-        """Query graph using JSON input format"""
         print("\n❓ QUERY KNOWLEDGE GRAPH")
         print('Single-line: {"query": "List the main compliance requirements."}')
         print('Multi-line:')
@@ -145,7 +141,6 @@ class GraphRAGCLI:
             print(f"❌ Error querying graph: {e}")
     
     def modify_node_json(self):
-        """Modify node using JSON input format"""
         print("\n✏️ MODIFY GRAPH NODE")
         print('Single-line: {"action": "modify", "node_id": "Policy_Section_5.1", "new_details": "Updated requirements..."}')
         print('Multi-line:')
@@ -183,7 +178,6 @@ class GraphRAGCLI:
             print(f"❌ Error modifying node: {e}")
     
     def delete_node_json(self):
-        """Delete node using JSON input format"""
         print("\n🗑️ DELETE GRAPH NODE")
         print('Single-line: {"action": "delete", "node_id": "Policy_Section_5.1"}')
         print('Multi-line:')
@@ -219,7 +213,6 @@ class GraphRAGCLI:
             print(f"❌ Error deleting node: {e}")
     
     def visualize_graph(self):
-        """Visualize the current graph"""
         try:
             print("\n📊 GRAPH VISUALIZATION")
             visualization = self.rag_system.visualize_current_graph()
@@ -228,7 +221,6 @@ class GraphRAGCLI:
             print(f"❌ Error visualizing graph: {e}")
     
     def show_statistics(self):
-        """Show graph statistics"""
         try:
             print("\n📈 GRAPH STATISTICS")
             stats = self.rag_system.get_graph_statistics()
