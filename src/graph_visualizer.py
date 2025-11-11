@@ -11,7 +11,6 @@ class GraphVisualizer:
         }
     
     def visualize_graph_text(self, graph: nx.DiGraph) -> str:
-        """Generate text-based visualization of the graph"""
         output = []
         output.append("=" * 60)
         output.append("KNOWLEDGE GRAPH VISUALIZATION")
@@ -45,7 +44,6 @@ class GraphVisualizer:
         return "\n".join(output)
     
     def get_graph_stats(self, graph: nx.DiGraph) -> Dict:
-        """Get statistics about the graph"""
         nodes_by_type = {}
         for _, node_data in graph.nodes(data=True):
             node_type = node_data.get("type", "unknown")
