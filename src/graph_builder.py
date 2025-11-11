@@ -9,7 +9,6 @@ class KnowledgeGraphBuilder:
         self.graph = nx.DiGraph()
     
     def build_from_extraction(self, extraction_result: Dict) -> nx.DiGraph:
-        """Build knowledge graph from entity extraction results with better error handling"""
         self.graph = nx.DiGraph()
         
         print("🕸️ Starting graph construction...")
@@ -78,7 +77,6 @@ class KnowledgeGraphBuilder:
         return sections_added
     
     def _add_requirements(self, extraction_result: Dict) -> int:
-        """Add requirements as nodes"""
         requirements_added = 0
         sections = extraction_result.get("policy_sections", [])
         
@@ -135,7 +133,6 @@ class KnowledgeGraphBuilder:
         return entities_added
     
     def _add_relationships(self, extraction_result: Dict) -> int:
-        """Add explicit relationships from extraction"""
         relationships = extraction_result.get("relationships", [])
         relationships_added = 0
         
@@ -161,7 +158,6 @@ class KnowledgeGraphBuilder:
         return relationships_added
     
     def _add_auto_relationships(self, extraction_result: Dict) -> int:
-        """Add automatic relationships based on content analysis"""
         auto_relationships_added = 0
         entities = extraction_result.get("entities", [])
         sections = extraction_result.get("policy_sections", [])
