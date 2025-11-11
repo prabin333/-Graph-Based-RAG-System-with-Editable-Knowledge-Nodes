@@ -21,7 +21,6 @@ class GraphRAGSystem:
         self._initialize_llm()
     
     def _initialize_llm(self):
-        """Initialize the LLM for answer generation"""
         try:
             if not config.LLM_MODEL_PATH:
                 raise ValueError("LLM model path not configured")
@@ -60,7 +59,6 @@ class GraphRAGSystem:
             self.llm_pipeline = None
     
     def process_document_with_query(self, input_data: Dict) -> Dict:
-        """Process document and answer query with comprehensive progress tracking"""
         document_path = input_data.get("document", "").strip()
         query = input_data.get("query", "").strip()
         
@@ -144,7 +142,6 @@ class GraphRAGSystem:
             raise Exception(f"Error reading PDF file: {e}")
     
     def query_graph(self, question: str) -> Dict:
-        """Answer questions using GRAPH-BASED RAG"""
         if not hasattr(self.graph_builder, 'graph') or self.graph_builder.graph.number_of_nodes() == 0:
             return {
                 "answer": "No knowledge graph available. Please upload a document first."
@@ -167,7 +164,6 @@ class GraphRAGSystem:
         }
     
     def _find_relevant_nodes_in_graph(self, question: str) -> List[str]:
-        """Find relevant nodes in the knowledge graph based on the question"""
         relevant_nodes = []
         graph = self.graph_builder.graph
         
@@ -196,7 +192,6 @@ class GraphRAGSystem:
         return relevant_nodes
     
     def _extract_graph_context(self, node_ids: List[str]) -> str:
-        """Extract context from relevant nodes and their connections"""
         graph = self.graph_builder.graph
         context_parts = []
         
@@ -233,7 +228,6 @@ class GraphRAGSystem:
         return "\n\n".join(context_parts)
     
     def _generate_with_llm_using_graph(self, question: str, graph_context: str) -> str:
-        """Generate answer using LLM with graph context"""
         if not graph_context:
             return "I couldn't find relevant information in the knowledge graph to answer this question."
         
@@ -288,7 +282,6 @@ ANSWER: """
             }
     
     def delete_node(self, node_id: str) -> Dict:
-        """Delete a node from the knowledge graph - returns structured system response"""
         if not node_id:
             return {
                 "answer": "node_id is required",
@@ -312,7 +305,6 @@ ANSWER: """
             }
     
     def visualize_current_graph(self) -> str:
-        """Visualize the current knowledge graph"""
         if hasattr(self.graph_builder, 'graph'):
             return self.visualizer.visualize_graph_text(self.graph_builder.graph)
         else:
