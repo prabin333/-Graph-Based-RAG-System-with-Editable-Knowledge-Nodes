@@ -1,4 +1,4 @@
-## Graph-Enhanced RAG System: Assignment 3
+## Graph-Enhanced RAG System
 
 A sophisticated Retrieval-Augmented Generation (RAG) system that converts unstructured documents into a dynamic, queryable Knowledge Graph. This document outlines the system architecture and features.
 
